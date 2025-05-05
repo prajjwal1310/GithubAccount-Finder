@@ -4,7 +4,10 @@ let btn = document.querySelector(".btn");
 
 async function getProfileData(username) {
     let raw1 = await fetch(`https://api.github.com/users/${username}`);
-    if (!raw1.ok) throw new Error("Invalid username");
+    if (!raw1.ok){
+        card.innerHTML = "";
+        alert("Invalid username. Try again!");
+    }
     else {
         return raw1.json();
     }
